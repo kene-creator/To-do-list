@@ -1,20 +1,15 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# To do list
 
-> Awesome books
+> This is a demo to do list application
 
 ## Built With
 
 - HTML
 - CSS
 - Javascript
-
-## Live Demo (if available)
-
-[Live Demo Link](https://kene-creator.github.io/Career-Development-Summit/)
-
-[Live Presentation Link](https://www.loom.com/share/c73569a300564b518fce53512cedb469)
+- Webpack
 
 ## Getting Started
 
@@ -26,6 +21,7 @@
 -StyleLint
 -eslint
 -node-sass
+-webpack 5
 
 ## Authors
 
@@ -48,8 +44,6 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Hat tip to anyone whose code was used
-- Creative Common
-- Cindy Shin
 
 ## 📝 License
 
