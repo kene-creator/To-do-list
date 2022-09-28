@@ -2,6 +2,46 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/add.js":
+/*!***********************!*\
+  !*** ./src/js/add.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addToLocale": () => (/* binding */ addToLocale)
+/* harmony export */ });
+var addToLocale = function addToLocale(item) {
+  localStorage.setItem('List', JSON.stringify(item));
+};
+
+/***/ }),
+
+/***/ "./src/js/store.js":
+/*!*************************!*\
+  !*** ./src/js/store.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getList": () => (/* binding */ getList)
+/* harmony export */ });
+var getList = function getList() {
+  var books;
+
+  if (localStorage.getItem('List') === null) {
+    books = [];
+  } else {
+    books = JSON.parse(localStorage.getItem('List'));
+  }
+
+  return books;
+};
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/style.css":
 /*!***********************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/style.css ***!
@@ -21,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  background-color: #f6f6f6;\n  font-family: \"Montserrat\", sans-serif;\n}\n\n.heading {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.task_body {\n  display: flex;\n  flex-direction: column;\n  margin: 40px auto;\n  background-color: #fff;\n  width: 500px;\n  height: 500px;\n  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;\n}\n\n.task_head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #eee;\n  padding: 10px 10px;\n}\n\n.task_heading {\n  font-size: 15px;\n  font-weight: 500;\n  color: #5b5959;\n}\n\n.task_input {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  padding: 15px 10px;\n  border-bottom: 1px solid #eee;\n  color: #5b5959;\n}\n\n.input {\n  border: none;\n  width: 90%;\n  font-size: 24px;\n  font-style: italic;\n}\n\n.icon {\n  width: 15px;\n  height: 15px;\n  fill: #5b5959;\n}\n\n.task_items {\n  width: 100%;\n}\n\n.task_list {\n  list-style: none;\n  display: flex;\n  flex-direction: column;\n  padding: 0 10px;\n  margin: 0;\n  border-bottom: 1px solid #eee;\n  color: #5b5959;\n}\n\n.task_item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-weight: 500;\n  padding: 10px;\n  border-bottom: 1px solid #eee;\n}\n\n.check {\n  margin-right: 20px;\n  width: 20px;\n  height: 25px;\n}\n\n.item_name {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.btn {\n  font-size: 18px;\n  padding: 15px;\n  background-color: #eee;\n  border: none;\n}", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,sBAAA;AACF;;AAEA;EACE,yBAAA;EACA,qCAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,aAAA;EACA,sBAAA;EACA,iBAAA;EACA,sBAAA;EACA,YAAA;EACA,aAAA;EACA,iDAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,6BAAA;EACA,kBAAA;AACF;;AAEA;EACE,eAAA;EACA,gBAAA;EACA,cAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,WAAA;EACA,kBAAA;EACA,6BAAA;EACA,cAAA;AACF;;AAEA;EACE,YAAA;EACA,UAAA;EACA,eAAA;EACA,kBAAA;AACF;;AAEA;EACE,WAAA;EACA,YAAA;EACA,aAAA;AACF;;AAEA;EACE,WAAA;AACF;;AAEA;EACE,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,eAAA;EACA,SAAA;EACA,6BAAA;EACA,cAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,gBAAA;EACA,aAAA;EACA,6BAAA;AACF;;AAEA;EACE,kBAAA;EACA,WAAA;EACA,YAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,eAAA;EACA,aAAA;EACA,sBAAA;EACA,YAAA;AACF","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: #f6f6f6;\r\n  font-family: 'Montserrat', sans-serif;\r\n}\r\n\r\n.heading {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.task_body {\r\n  display: flex;\r\n  flex-direction: column;\r\n  margin: 40px auto;\r\n  background-color: #fff;\r\n  width: 500px;\r\n  height: 500px;\r\n  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;\r\n}\r\n\r\n.task_head {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  border-bottom: 1px solid #eee;\r\n  padding: 10px 10px;\r\n}\r\n\r\n.task_heading {\r\n  font-size: 15px;\r\n  font-weight: 500;\r\n  color: #5b5959;\r\n}\r\n\r\n.task_input {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  width: 100%;\r\n  padding: 15px 10px;\r\n  border-bottom: 1px solid #eee;\r\n  color: #5b5959;\r\n}\r\n\r\n.input {\r\n  border: none;\r\n  width: 90%;\r\n  font-size: 24px;\r\n  font-style: italic;\r\n}\r\n\r\n.icon {\r\n  width: 15px;\r\n  height: 15px;\r\n  fill: #5b5959;\r\n}\r\n\r\n.task_items {\r\n  width: 100%;\r\n}\r\n\r\n.task_list {\r\n  list-style: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0 10px;\r\n  margin: 0;\r\n  border-bottom: 1px solid #eee;\r\n  color: #5b5959;\r\n}\r\n\r\n.task_item {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  font-weight: 500;\r\n  padding: 10px;\r\n  border-bottom: 1px solid #eee;\r\n}\r\n\r\n.check {\r\n  margin-right: 20px;\r\n  width: 20px;\r\n  height: 25px;\r\n}\r\n\r\n.item_name {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.btn {\r\n  font-size: 18px;\r\n  padding: 15px;\r\n  background-color: #eee;\r\n  border: none;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  box-sizing: border-box;\n}\n\nbody {\n  background-color: #f6f6f6;\n  font-family: \"Montserrat\", sans-serif;\n}\n\n.heading {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.task_body {\n  display: flex;\n  flex-direction: column;\n  margin: 40px auto;\n  background-color: #fff;\n  width: 500px;\n  height: 500px;\n  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;\n}\n\n.task_head {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid #eee;\n  padding: 10px 10px;\n}\n\n.task_heading {\n  font-size: 15px;\n  font-weight: 500;\n  color: #5b5959;\n}\n\n.task_input {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  padding: 15px 10px;\n  border-bottom: 1px solid #eee;\n  color: #5b5959;\n}\n\n.input {\n  border: none;\n  width: 150%;\n  font-size: 24px;\n  font-style: italic;\n}\n\n.input:focus {\n  outline: none;\n}\n\n.icon {\n  width: 15px;\n  height: 15px;\n  fill: #5b5959;\n  display: flex !important;\n}\n\n.task_items {\n  width: 100%;\n}\n\n.task_list {\n  list-style: none;\n  display: flex;\n  flex-direction: column;\n  padding: 0 10px;\n  margin: 0;\n  border-bottom: 1px solid #eee;\n  color: #5b5959;\n}\n\n.task_item {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  font-weight: 500;\n  padding: 10px;\n  border-bottom: 1px solid #eee;\n}\n\n.check {\n  margin-right: 20px;\n  width: 20px;\n  height: 25px;\n}\n\n.item_name {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.btn {\n  font-size: 18px;\n  padding: 15px;\n  background-color: #eee;\n  border: none;\n}\n\n.strike {\n  text-decoration: line-through;\n  transition: text-decoration 0.5s ease-in-out;\n  -webkit-transition: text-decoration 0.5s ease-in-out;\n  -moz-transition: text-decoration 0.5s ease-in-out;\n  -ms-transition: text-decoration 0.5s ease-in-out;\n  -o-transition: text-decoration 0.5s ease-in-out;\n  -webkit-transition: text-decoration 2s ease-in-out;\n}\n\n.hidden {\n  display: none;\n}", "",{"version":3,"sources":["webpack://./src/styles/style.css"],"names":[],"mappings":"AAAA;EACE,sBAAA;AACF;;AAEA;EACE,yBAAA;EACA,qCAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,aAAA;EACA,sBAAA;EACA,iBAAA;EACA,sBAAA;EACA,YAAA;EACA,aAAA;EACA,+CAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,6BAAA;EACA,kBAAA;AACF;;AAEA;EACE,eAAA;EACA,gBAAA;EACA,cAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,WAAA;EACA,kBAAA;EACA,6BAAA;EACA,cAAA;AACF;;AAEA;EACE,YAAA;EACA,WAAA;EACA,eAAA;EACA,kBAAA;AACF;;AAEA;EACE,aAAA;AACF;;AAEA;EACE,WAAA;EACA,YAAA;EACA,aAAA;EACA,wBAAA;AACF;;AAEA;EACE,WAAA;AACF;;AAEA;EACE,gBAAA;EACA,aAAA;EACA,sBAAA;EACA,eAAA;EACA,SAAA;EACA,6BAAA;EACA,cAAA;AACF;;AAEA;EACE,aAAA;EACA,8BAAA;EACA,mBAAA;EACA,gBAAA;EACA,aAAA;EACA,6BAAA;AACF;;AAEA;EACE,kBAAA;EACA,WAAA;EACA,YAAA;AACF;;AAEA;EACE,aAAA;EACA,uBAAA;EACA,mBAAA;AACF;;AAEA;EACE,eAAA;EACA,aAAA;EACA,sBAAA;EACA,YAAA;AACF;;AAEA;EACE,6BAAA;EACA,4CAAA;EACA,oDAAA;EACA,iDAAA;EACA,gDAAA;EACA,+CAAA;EACA,kDAAA;AACF;;AAEA;EACE,aAAA;AACF","sourcesContent":["* {\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: #f6f6f6;\r\n  font-family: 'Montserrat', sans-serif;\r\n}\r\n\r\n.heading {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.task_body {\r\n  display: flex;\r\n  flex-direction: column;\r\n  margin: 40px auto;\r\n  background-color: #fff;\r\n  width: 500px;\r\n  height: 500px;\r\n  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;\r\n}\r\n\r\n.task_head {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  border-bottom: 1px solid #eee;\r\n  padding: 10px 10px;\r\n}\r\n\r\n.task_heading {\r\n  font-size: 15px;\r\n  font-weight: 500;\r\n  color: #5b5959;\r\n}\r\n\r\n.task_input {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  width: 100%;\r\n  padding: 15px 10px;\r\n  border-bottom: 1px solid #eee;\r\n  color: #5b5959;\r\n}\r\n\r\n.input {\r\n  border: none;\r\n  width: 150%;\r\n  font-size: 24px;\r\n  font-style: italic;\r\n}\r\n\r\n.input:focus {\r\n  outline: none;\r\n}\r\n\r\n.icon {\r\n  width: 15px;\r\n  height: 15px;\r\n  fill: #5b5959;\r\n  display: flex !important;\r\n}\r\n\r\n.task_items {\r\n  width: 100%;\r\n}\r\n\r\n.task_list {\r\n  list-style: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0 10px;\r\n  margin: 0;\r\n  border-bottom: 1px solid #eee;\r\n  color: #5b5959;\r\n}\r\n\r\n.task_item {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  font-weight: 500;\r\n  padding: 10px;\r\n  border-bottom: 1px solid #eee;\r\n}\r\n\r\n.check {\r\n  margin-right: 20px;\r\n  width: 20px;\r\n  height: 25px;\r\n}\r\n\r\n.item_name {\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.btn {\r\n  font-size: 18px;\r\n  padding: 15px;\r\n  background-color: #eee;\r\n  border: none;\r\n}\r\n\r\n.strike {\r\n  text-decoration: line-through;\r\n  transition: text-decoration 0.5s ease-in-out;\r\n  -webkit-transition: text-decoration 0.5s ease-in-out;\r\n  -moz-transition: text-decoration 0.5s ease-in-out;\r\n  -ms-transition: text-decoration 0.5s ease-in-out;\r\n  -o-transition: text-decoration 0.5s ease-in-out;\r\n  -webkit-transition: text-decoration 2s ease-in-out;\r\n}\r\n\r\n.hidden {\r\n  display: none;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -654,34 +694,101 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/style.css */ "./src/styles/style.css");
 /* harmony import */ var _img_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../img/icon.svg */ "./img/icon.svg");
+/* harmony import */ var _add__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./add */ "./src/js/add.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./store */ "./src/js/store.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
-var list = [{
-  description: 'Do the Laundry',
-  completed: true,
-  index: 1
-}, {
-  description: 'Read for my Exam',
-  completed: true,
-  index: 2
-}, {
-  description: 'Arrange my room',
-  completed: true,
-  index: 3
-}, {
-  description: 'Fix my telelvision',
-  completed: true,
-  index: 4
-}];
+
+
+
+var form = document.querySelector('.form');
+var input = document.querySelector('.input');
+var container = document.querySelector('.task_list');
+var list = [];
+
+for (var i = 0; i < list.length; i++) {
+  list[i].index = i;
+}
 
 var generateMarkup = function generateMarkup(list, i) {
-  return "<li class=\"task_item\">\n  <div class=\"item_name\">\n    <input type=\"checkbox\" class=\"check\" id='item-".concat(i, "' />\n    <label for='item-").concat(i, "' class=\"task_name\">").concat(list.description, "</label>\n  </div>\n\n  <svg class=\"icon\">\n    <use href=\"").concat(_img_icon_svg__WEBPACK_IMPORTED_MODULE_1__, "#icon-dots-horizontal-triple\"></use>\n  </svg>\n</li>");
+  return "<li class=\"task_item\">\n  <div class=\"item_name\">\n    <input type=\"checkbox\" class=\"check\" id='item-".concat(i, "' />\n    <label for='item-").concat(i, "' class=\"task_name\">").concat(list.name, "</label>\n  </div>\n\n  <svg class=\"icon\">\n    <use href=\"").concat(_img_icon_svg__WEBPACK_IMPORTED_MODULE_1__, "#icon-dots-horizontal-triple\"></use>\n  </svg>\n</li>");
 };
 
-var render = list.map(generateMarkup).join('');
-document.querySelector('.task_list').innerHTML = render;
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var listName = input.value;
+  if (listName === null || listName === '') return;
+  var obj = {
+    name: listName,
+    description: true,
+    id: list.length
+  };
+  input.value = null;
+  list.push(obj);
+  _add__WEBPACK_IMPORTED_MODULE_2__.addToLocale(list);
+  var render = list.map(generateMarkup).join('');
+  container.innerHTML = render;
+});
+window.addEventListener('load', function (e) {
+  var locale = _store__WEBPACK_IMPORTED_MODULE_3__.getList();
+  list.push.apply(list, _toConsumableArray(locale));
+  var renderLocale = list.map(generateMarkup).join('');
+  container.innerHTML = renderLocale;
+  document.addEventListener('click', function (e) {
+    var clicked = e.target.closest('.task_item');
+    var listContaniner = clicked.firstElementChild;
+    var class1 = clicked.firstElementChild.firstElementChild;
+    var class2 = clicked.firstElementChild.lastElementChild;
+    console.log(class1);
+
+    var markupCheck = function markupCheck() {
+      return " <svg class=\"icon\">\n<use href=\"".concat(_img_icon_svg__WEBPACK_IMPORTED_MODULE_1__, "#icon-check\"></use>\n</svg>");
+    }; // console.log(class1, class2);
+    // class1.addEventListener('click', (e) => {
+    //   class1.classList.toggle('hidden');
+    //   class2.classList.toggle('strike');
+    //   console.log(class1);
+    // });
+    // if (
+    //   e.target.classList.contains('check') ||
+    //   e.target.classList.contains('task_name')
+    // ) {
+    //   class2.classList.toggle('strike');
+    // }
+
+
+    if (e.target.classList.contains('check')) {
+      e.target.classList.toggle('hidden');
+      class2.classList.toggle('strike'); // clicked.appendChild(markupCheck());
+
+      listContaniner.insertAdjacentHTML('afterbegin', markupCheck());
+      console.log(class2.classList);
+    }
+  });
+}); // document.addEventListener('click', (e) => {
+//   if (
+//     e.target.classList.contains('check') ||
+//     e.target.classList.contains('task_name')
+//   ) {
+//     e.target.classList.toggle('strike');
+//   }
+//   if (e.target.classList.contains('check')) {
+//     e.target.classList.toggle('hidden');
+//   }
+// });
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle325d90886eac91c49482.js.map
+//# sourceMappingURL=bundle08d3bc882df933d9d3e6.js.map

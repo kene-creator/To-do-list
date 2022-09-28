@@ -19,7 +19,7 @@ body {
   margin: 40px auto;
   background-color: #fff;
   width: 500px;
-  height: 500px;
+  height: 100%;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
@@ -49,15 +49,26 @@ body {
 
 .input {
   border: none;
-  width: 90%;
+  width: 150%;
   font-size: 24px;
   font-style: italic;
+}
+
+.input:focus {
+  outline: none;
 }
 
 .icon {
   width: 15px;
   height: 15px;
   fill: #5b5959;
+}
+
+.icon-2 {
+  width: 20px;
+  height: 20px;
+  fill: #15baf6;
+  margin-right: 15px;
 }
 
 .task_items {
@@ -79,8 +90,10 @@ body {
   justify-content: space-between;
   align-items: center;
   font-weight: 500;
-  padding: 10px;
+  padding: 10px 15px;
+  margin-left: -10px;
   border-bottom: 1px solid #eee;
+  width: 104%;
 }
 
 .check {
@@ -100,4 +113,22 @@ body {
   padding: 15px;
   background-color: #eee;
   border: none;
+}
+
+.strike {
+  text-decoration: line-through;
+  transition: text-decoration 0.5s ease-in-out;
+  -webkit-transition: text-decoration 0.5s ease-in-out;
+  -moz-transition: text-decoration 0.5s ease-in-out;
+  -ms-transition: text-decoration 0.5s ease-in-out;
+  -o-transition: text-decoration 0.5s ease-in-out;
+  -webkit-transition: text-decoration 2s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+.yellow-1 {
+  background-color: #eddf46ae;
 }
