@@ -16,14 +16,17 @@ for (let i = 0; i < list.length; i++) {
 const generateMarkup = (list, i) => {
   return `
   <li class="task_item">
+  <div class="task_contianer">
   <div class="item_name">
-    <input type="checkbox" class="check" id='item-${i}' />
-    <label for='item-${i}' class="task_name">${list.name}</label>
-  </div>
+  <input type="checkbox" class="check" id='item-${i}' />
+  <label for='item-${i}' class="task_name">${list.name}</label>
+</div>
 
-  <svg class="icon dot">
-    <use href="${icon}#icon-dots-horizontal-triple"></use>
-  </svg>
+<svg class="icon dot">
+  <use href="${icon}#icon-dots-horizontal-triple"></use>
+</svg>
+  </div>
+ 
 </li>`;
 };
 
@@ -65,34 +68,49 @@ window.addEventListener('load', (e) => {
   // });
 
   document.addEventListener('click', (e) => {
-    const clicked = e.target.closest('.task_item');
+    const clicked = e.target.closest('.task_contianer');
+    const itemContainer = clicked.parentElement;
     const listContaniner = clicked.firstElementChild;
-    const class1 = clicked.firstElementChild.firstElementChild;
-    const class2 = clicked.firstElementChild.lastElementChild;
+    const inputEle = clicked.firstElementChild.firstElementChild;
+    const labelEle = clicked.firstElementChild.lastElementChild;
     const markupCheck = () => {
       return ` <svg class="icon-2">
 <use href="${icon}#icon-check"></use>
 </svg>`;
     };
 
+    console.log(inputEle);
+
     if (e.target.classList.contains('check')) {
-      e.target.classList.toggle('hidden');
-      class2.classList.toggle('strike');
-      listContaniner.insertAdjacentHTML('afterbegin', markupCheck());
+      e.target.classList.add('hidden');
+      // labelEle.classList.toggle('strike');
     }
 
-    const class3 = clicked.firstElementChild.firstElementChild;
+    if (e.target.classList.contains('icon-2')) {
+      e.target.classList.add('hidden');
+    }
 
-    class3.addEventListener('click', (e) => {
-      class1.checked = false;
-      class3.classList.toggle('hidden');
-      class1.classList.toggle('hidden');
-      class2.classList.toggle('strike');
+    listContaniner.insertAdjacentHTML('afterbegin', markupCheck());
+
+    const svgEle = clicked.firstElementChild.firstElementChild;
+
+    svgEle.addEventListener('click', (e) => {
+      inputEle.checked = false;
+
+      svgEle.classList.toggle('hidden');
+      inputEle.classList.toggle('hidden');
+
+      labelEle.classList.toggle('strike');
+    });
+
+    labelEle.addEventListener('click', function (e) {
+      inputEle.checked = false;
+      // e.target.classList.toggle('strike');
     });
 
     const class4 = clicked.lastElementChild;
     class4.addEventListener('click', () => {
-      clicked.classList.toggle('yellow-1');
+      itemContainer.classList.toggle('yellow-1');
     });
   });
 });
