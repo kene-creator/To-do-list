@@ -15,18 +15,15 @@ for (let i = 0; i < list.length; i++) {
 
 const generateMarkup = (list, i) => {
   return `
-  <li class="task_item">
-  <div class="task_contianer">
+  <li class="task_item" id="${i}">
   <div class="item_name">
-  <input type="checkbox" class="check" id='item-${i}' />
-  <label for='item-${i}' class="task_name">${list.name}</label>
-</div>
-
-<svg class="icon dot">
-  <use href="${icon}#icon-dots-horizontal-triple"></use>
-</svg>
+    <input type="checkbox" class="check" id='item-${i}' />
+    <label class="task_name">${list.name}</label>
   </div>
- 
+
+  <svg class="icon dot">
+    <use href="${icon}#icon-dots-horizontal-triple"></use>
+  </svg>
 </li>`;
 };
 
@@ -43,6 +40,7 @@ form.addEventListener('submit', function (e) {
 
   input.value = null;
   list.push(obj);
+  document.querySelector('.list_num').textContent = list.length;
 
   add.addToLocale(list);
 
@@ -54,63 +52,65 @@ window.addEventListener('load', (e) => {
   const locale = store.getList();
   list.push(...locale);
   const renderLocale = list.map(generateMarkup).join('');
+  document.querySelector('.list_num').textContent = locale.length;
   container.innerHTML = renderLocale;
-  // const remove = document.querySelectorAll('.dot');
-
-  // remove.forEach((i) => {
-  //   i.addEventListener('click', function (e) {
-  //     // document.querySelector('.task_item').classList.toggle('yellow-1');
-  //     const item = document.querySelectorAll('.task_item');
-  //     item.forEach((i) => {
-  //       i.classList.toggle('yellow-1');
-  //     });
-  //   });
-  // });
 
   document.addEventListener('click', (e) => {
-    const clicked = e.target.closest('.task_contianer');
-    const itemContainer = clicked.parentElement;
+    const clicked = e.target.closest('.task_item');
     const listContaniner = clicked.firstElementChild;
-    const inputEle = clicked.firstElementChild.firstElementChild;
-    const labelEle = clicked.firstElementChild.lastElementChild;
+    const class1 = clicked.firstElementChild.firstElementChild;
+    const class2 = clicked.firstElementChild.lastElementChild;
     const markupCheck = () => {
       return ` <svg class="icon-2">
-<use href="${icon}#icon-check"></use>
-</svg>`;
+  <use href="${icon}#icon-check"></use>
+  </svg>`;
     };
 
-    console.log(inputEle);
-
     if (e.target.classList.contains('check')) {
-      e.target.classList.add('hidden');
-      // labelEle.classList.toggle('strike');
+      e.target.classList.toggle('hidden');
+      class2.classList.toggle('strike');
+      listContaniner.insertAdjacentHTML('afterbegin', markupCheck());
+      clicked.classList.toggle('done');
     }
 
-    if (e.target.classList.contains('icon-2')) {
-      e.target.classList.add('hidden');
-    }
-
-    listContaniner.insertAdjacentHTML('afterbegin', markupCheck());
-
-    const svgEle = clicked.firstElementChild.firstElementChild;
-
-    svgEle.addEventListener('click', (e) => {
-      inputEle.checked = false;
-
-      svgEle.classList.toggle('hidden');
-      inputEle.classList.toggle('hidden');
-
-      labelEle.classList.toggle('strike');
+    document.querySelector('.btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (clicked.classList.contains('done')) {
+        const listArr2 = store.getList();
+        console.log(listArr2);
+        clicked.remove();
+        for (let i = 0; i < list.length; i++) {
+          if (clicked.id == i) {
+            listArr2.splice(i, 1);
+            localStorage.setItem('List', JSON.stringify(listArr2));
+          }
+        }
+      }
     });
 
-    labelEle.addEventListener('click', function (e) {
-      inputEle.checked = false;
-      // e.target.classList.toggle('strike');
+    const class3 = clicked.firstElementChild.firstElementChild;
+
+    class3.addEventListener('click', (e) => {
+      class1.checked = false;
+      class3.classList.toggle('hidden');
+      class1.classList.toggle('hidden');
+      class2.classList.toggle('strike');
     });
 
     const class4 = clicked.lastElementChild;
     class4.addEventListener('click', () => {
-      itemContainer.classList.toggle('yellow-1');
+      clicked.classList.toggle('yellow-1');
+      class4.innerHTML = `<use href="${icon}#icon-trash-2"></use>`;
+      class4.addEventListener('click', () => {
+        clicked.remove();
+        const listArr = store.getList();
+        for (let i = 0; i < list.length; i++) {
+          if (clicked.id == i) {
+            listArr.splice(i, 1);
+            localStorage.setItem('List', JSON.stringify(listArr));
+          }
+        }
+      });
     });
   });
 });
