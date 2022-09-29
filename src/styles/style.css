@@ -91,9 +91,6 @@ body {
   margin-left: -10px;
   border-bottom: 1px solid #eee;
   width: 104%;
-}
-
-.task_item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -107,7 +104,6 @@ body {
 
 .item_name {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -126,7 +122,6 @@ body {
   -moz-transition: text-decoration 0.5s ease-in-out;
   -ms-transition: text-decoration 0.5s ease-in-out;
   -o-transition: text-decoration 0.5s ease-in-out;
-  -webkit-transition: text-decoration 2s ease-in-out;
 }
 
 .hidden {
