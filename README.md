@@ -13,7 +13,7 @@
 
 ## Getting Started
 
-**[Clone the project](https://github.com/kene-creator/To-do-list.git), open up your terminal and run npm install. To install all the devDependenceies needed for the project to run smoothly. Next on your terminal type npm run build to get the project started and npm run dev to open with live server**
+**You should do an npm install in your terminal to install all the dev dependencies. Then do a npm start to get the code running**
 
 ### Install
 
